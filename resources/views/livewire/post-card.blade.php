@@ -1,5 +1,3 @@
-@props(['post'])
-
 <article class="bg-white border-2 border-black rounded-lg shadow mx-auto max-w-none px-4 py-5 sm:px-6 mb-8">
     <!-- Barta Card Top -->
     <header>
@@ -15,16 +13,16 @@
                 <!-- User Info -->
                 <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                     <a href="profile.html" class="hover:underline font-semibold line-clamp-1">
-                        @if (isset($name))
-                        {{ $name }}
+                        @if (isset($post->user->name))
+                        {{ $post->user->name }}
                         @endif
                     </a>
 
                     <a href="{{route('profile')}}" wire:navigate class="hover:underline text-sm text-gray-500 line-clamp-1">
-                        @if (isset($username))
-                            {{ $username }}
+                        @if (isset($post->user->username))
+                            {{ $post->user->username }}
                         @endif
-
+                        @user_9347
                     </a>
                 </div>
                 <!-- /User Info -->
@@ -72,7 +70,7 @@
 
     <!-- Date Created & View Stat -->
     <div class="flex items-center gap-2 text-gray-500 text-xs my-2">
-        <span class="">{{ $time_ago }}</span>
+        <span class="">{{ $post->time_ago }}</span>
         <span class="">•</span>
         <span>4,450 views</span>
     </div>
@@ -80,7 +78,7 @@
     <!-- Barta Card Bottom -->
     <footer class="border-t border-gray-200 pt-2">
         <!-- Card Bottom Action Buttons -->
-        <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
 
             <livewire:post-like :post="$post" :key="$post->id"/>    
 
@@ -105,5 +103,3 @@
     </footer>
     <!-- /Barta Card Bottom -->
 </article>
-
-{{($post)}}

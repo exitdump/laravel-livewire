@@ -19,11 +19,11 @@ class Post extends Model
 
     public function likes()
     {
-        return $this->hasMany(Like::class,"user_id");
+        return $this->hasMany(Like::class);
     }
 
-    public function isLikedBy(User $user)
+    public function isLikedBy($user)
     {
-        return $this->likes()->where("user_id", $user->id)->exists();
+        return $this->likes->contains('user_id', $user->id);
     }
 }
