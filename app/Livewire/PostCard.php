@@ -8,7 +8,6 @@ use App\Models\Post;
 class PostCard extends Component
 {
     public Post $post;
-    public string $test = 'testtt';
 
     public function mount(Post $post)
     {

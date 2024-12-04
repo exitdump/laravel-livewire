@@ -7,7 +7,7 @@
             <div class="flex items-center space-x-3">
                 <!-- User Avatar -->
                 <div class="flex-shrink-0">
-                    <img class="h-10 w-10 rounded-full object-cover" src="https://avatars.githubusercontent.com/u/831997"
+                    <img class="h-10 w-10 rounded-full object-cover" src="https://avatars.githubusercontent.com/u/{{rand(10,1000000)}}"
                         alt="Tony Stark">
                 </div>
                 <!-- /User Avatar -->
