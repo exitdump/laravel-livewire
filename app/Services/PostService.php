@@ -30,7 +30,7 @@ class PostService
     public function getPostsBy(User $user, $columns = ['*'])
     {
         return $user->posts()
-            ->with(['user', 'likes'])
+            ->with(['user:id,name', 'likes'])
             ->latest()
             ->get($columns); 
     }
