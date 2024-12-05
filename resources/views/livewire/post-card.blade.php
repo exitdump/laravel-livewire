@@ -72,7 +72,7 @@
     <div class="flex items-center gap-2 text-gray-500 text-xs my-2">
         <span class="">{{ $post->time_ago }}</span>
         <span class="">•</span>
-        {{-- <span>4,450 views</span> --}}
+        <span>4,450 views</span>
     </div>
 
     <!-- Barta Card Bottom -->

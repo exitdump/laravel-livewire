@@ -77,6 +77,6 @@
       </section>
 
       <livewire:forms.create-post />
-      <livewire:post-list />
+      <livewire:show-my-posts />
 
 </x-app-layout>
