@@ -1,6 +1,12 @@
 <?php
 
+use App\Services\PostService;
 use Illuminate\Support\Facades\Route;
+
+Route::get('test', function(PostService $postService) {
+    return $postService->getPostsBy(auth()->user())->count(); 
+});
+
 
 Route::view('/', 'welcome');
 Route::get('home', function () {
