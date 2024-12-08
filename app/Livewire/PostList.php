@@ -18,8 +18,12 @@ class PostList extends Component
     #[On('post-created')]
     public function postAdded($postId)
     {
-        // Reload posts or append the new post
-        $this->loadPosts();
+        $newPost = Post::with('user')->find($postId);
+
+        if ($newPost) {
+            $newPost->time_ago = $newPost->created_at->diffForHumans();
+            $this->posts->prepend($newPost); // Add the new post to the top of the list
+        }
     }
 
     public function loadPosts()

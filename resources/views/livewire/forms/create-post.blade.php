@@ -1,5 +1,4 @@
 <div>
-
     <x-barta.post-form />
     @error('content')
         <div class="flex mt-5 items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:text-red-400 dark:border-red-800"

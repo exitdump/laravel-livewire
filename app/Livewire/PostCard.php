@@ -10,11 +10,12 @@ class PostCard extends Component
 {
     public Post $post;
 
-    #[On('post-created')]
+    
     public function mount(Post $post)
     {
         $this->post = $post;
     }
+
 
     public function render()
     {
