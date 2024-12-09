@@ -3,6 +3,7 @@
 namespace App\Livewire\Forms;
 
 use App\Models\Post;
+use App\Services\PostService;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -11,19 +12,20 @@ class CreatePost extends Component
     #[Validate('required')] 
     public string $content = '';
 
+    private PostService $postService;
+
+    public function __construct()
+    {
+        $this->postService = app(PostService::class);
+    }
+
     public function storePost()
     {
-        $this->validate(); 
+        
+        $post = $this->postService->createPost( auth()->user(), $this->validate());
 
-        $post = Post::create([
-            'content' => $this->content,
-            'user_id' => auth()->id(), 
-        ]);
-
-        // Emit an event to update the post list
         $this->dispatch('post-created', postId: $post->id);
 
-        // Clear the input field
         $this->content = '';
         
         session()->flash('success', 'Your post was successfully created.');

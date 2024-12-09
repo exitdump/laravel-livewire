@@ -86,4 +86,9 @@ class PostService
 
         return $post;
     }
+
+    public function test()
+    {
+        return "test pass";
+    }
 }

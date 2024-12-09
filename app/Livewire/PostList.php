@@ -22,14 +22,14 @@ class PostList extends Component
 
         if ($newPost) {
             $newPost->time_ago = $newPost->created_at->diffForHumans();
-            $this->posts->prepend($newPost); // Add the new post to the top of the list
+            $this->posts->prepend($newPost); 
         }
     }
 
     public function loadPosts()
     {
         $this->posts = Post::with('user')->latest()->get()->map(function ($post) {
-            $post->time_ago = $post->created_at->diffForHumans(); // Add "time ago" format
+            $post->time_ago = $post->created_at->diffForHumans(); 
             return $post;
         });
     }
