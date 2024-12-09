@@ -10,6 +10,7 @@ new class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public string $bio = '';
 
     /**
      * Mount the component.
@@ -18,6 +19,7 @@ new class extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->bio = Auth::user()->bio ?? "";
     }
 
     /**
@@ -28,6 +30,7 @@ new class extends Component
         $user = Auth::user();
 
         $validated = $this->validate([
+            'bio' => ['string', 'max:50'],
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
         ]);
@@ -74,6 +77,29 @@ new class extends Component
     </header>
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
+        <div class="col-span-full mt-10 pb-10">
+            <label for="photo" class="block text-sm font-medium leading-6 text-gray-900">Photo</label>
+            <div class="mt-2 flex items-center gap-x-3">
+              <input class="hidden" type="file" name="avatar" id="avatar">
+              <img class="h-32 w-32 rounded-full" src="https://avatars.githubusercontent.com/u/831959" alt="Ahmed Shamim Hasan Shaon">
+              <label for="avatar">
+                <div class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                  Change
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="col-span-full">
+            <label for="bio" class="block text-sm font-medium leading-6 text-gray-900">Bio</label>
+            <div class="mt-2">
+              <textarea wire:model="bio" id="bio" name="bio" rows="3" class="block w-full rounded-md border-0 p-2 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6">Less Talk, More Code 💻</textarea>
+            </div>
+            <p class="mt-3 text-sm leading-6 text-gray-600">
+              Write a few sentences about yourself.
+            </p>
+          </div>
+
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required autofocus autocomplete="name" />

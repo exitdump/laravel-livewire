@@ -15,6 +15,10 @@ class PostList extends Component
         $this->loadPosts();
     }
 
+    public function updating(){
+        $this->loadPosts();
+    }
+
     #[On('post-created')]
     public function postAdded($postId)
     {
@@ -27,7 +31,7 @@ class PostList extends Component
     }
 
     public function loadPosts()
-    {
+    {   
         $this->posts = Post::with('user')->latest()->get()->map(function ($post) {
             $post->time_ago = $post->created_at->diffForHumans(); 
             return $post;
