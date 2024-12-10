@@ -15,19 +15,19 @@ class PostList extends Component
         $this->loadPosts();
     }
 
-    public function updating(){
-        $this->loadPosts();
-    }
-
     #[On('post-created')]
     public function postAdded($postId)
     {
         $newPost = Post::with('user')->find($postId);
 
+
         if ($newPost) {
-            $newPost->time_ago = $newPost->created_at->diffForHumans();
+            $newPost->time_ago = $newPost->created_at->diffForHumans();       
             $this->posts->prepend($newPost); 
         }
+
+        // dump('even listen from post-created');
+        // $this->posts = "";
     }
 
     public function loadPosts()
