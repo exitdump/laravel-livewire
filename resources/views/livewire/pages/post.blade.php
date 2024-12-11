@@ -15,7 +15,7 @@
                     <!-- User Info -->
                     <div class="text-gray-900 flex flex-col min-w-0 flex-1">
                         <a href="profile.html" class="hover:underline font-semibold line-clamp-1">
-                            Ahmed Shamim Hasan Shaon
+                            {{$post->user->name}}
                         </a>
 
                         <a href="profile.html" class="hover:underline text-sm text-gray-500 line-clamp-1">
@@ -59,24 +59,17 @@
         <!-- Content -->
         <div class="py-4 text-gray-700 font-normal">
             <p>
-                PHP এর $ নিয়ে এত টানাটানি না করে চাইলেই কিন্তু PHP কে fork করে
-                PoorPHP নামে নতুন ল্যাঙ্গুয়েজ বানানো যায়।
-                <br>
-                সবই থাকবে, কেবল $ থাকবে না!
-                <br>
-                <br>
-
-                আইডিয়াটা কেমন বন্ধুরা? 😁
+              {{ $post->content }}
             </p>
         </div>
 
         <!-- Date Created & View Stat -->
         <div class="flex items-center gap-2 text-gray-500 text-xs my-2">
-            <span class="">6 minutes ago</span>
+            <span class="">{{ $post->created_at->diffForHumans() }}</span>
             <span class="">•</span>
-            <span>3 comments</span>
+            <span>{{ $post->comments->count() }} comments</span>
             <span class="">•</span>
-            <span>450 views</span>
+            <span>{{ $post->views }} views</span>
         </div>
 
         <hr class="my-6">
