@@ -60,7 +60,7 @@
     </header>
 
     <!-- Content -->
-    <a href="./single.html">
+    <a href="{{ route('post.comments', $post) }}">
         <div class="py-4 text-gray-700 font-normal">
             <p>
                 {{ $post->content }}
@@ -84,7 +84,7 @@
 
             <div class="flex gap-8 text-gray-600">
                 <!-- Comment Button -->
-                <a href="./single.html" type="button"
+                <a href="{{ route('post.comments', $post) }}" type="button"
                     class="-m-2 flex gap-2 text-xs items-center rounded-full p-2 text-gray-600 hover:text-gray-800">
                     <span class="sr-only">Comment</span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
