@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\PostCommentsPage;
 use App\Services\PostService;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +13,8 @@ Route::view('/', 'welcome');
 Route::get('home', function () {
     return view('home');
 });
+
+Route::get('p/{post}', PostCommentsPage::class)->name('post.comments');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
